@@ -1,5 +1,6 @@
 import React from "react";
 
+// 页脚联系区块，包含 mailto 邮件链接。
 const GetInTouch = ({ heading, message, email }) => {
   return (
     <>

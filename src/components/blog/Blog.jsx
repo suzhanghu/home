@@ -2,6 +2,8 @@ import React from "react";
 import { BlogBuilder } from "./BlogBuilder";
 import bloglist from "../../editable-stuff/blog";
 import { Link } from "react-router-dom";
+
+// 博客列表页（当前版本路由未启用）。
 const Blog = (props) => {
   return (
     <div className="container-lg mt-5 bg-blue">
@@ -20,6 +22,7 @@ const Blog = (props) => {
   );
 };
 
+// 博客列表中的单个预览卡片。
 const BlogCard = ({ index, title, image, description }) => {
   return (
     <div className="m-5">

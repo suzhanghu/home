@@ -7,13 +7,16 @@ import { Jumbotron } from "./migration";
 import { Container } from "react-bootstrap";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 
+// 技能区块：用 Tab 切换技术技能和软技能。
+// 当页面滚动到该区附近时触发进度条动画。
 const Skills = React.forwardRef(({ heading, hardSkills, softSkills }, ref) => {
   const skillsTabRef = React.useRef(null);
   const [isScrolled, setIsScrolled] = React.useState(false);
-  //const navbarDimensions = useResizeObserver(navbarMenuRef);
+  // const navbarDimensions = useResizeObserver(navbarMenuRef);
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
+      // 只触发一次动画开关。
       if (!isScrolled && currPos.y - 400 < 0) setIsScrolled(true);
     },
     [],

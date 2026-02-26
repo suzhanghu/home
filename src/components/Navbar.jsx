@@ -6,13 +6,20 @@ import Nav from "react-bootstrap/Nav";
 import { mainBody, repos, about, skills } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
 
+// 吸顶导航栏，背景会随滚动动态变化：
+// 顶部时透明，滚动越过标题区后变为浅色背景。
 const Navigation = React.forwardRef((props, ref) => {
   // const { showBlog, FirstName } = config;
+  // isTop 只用于控制视觉样式。
   const [isTop, setIsTop] = useState(true);
+  // scrollPosition 保存当前滚动 Y 值，用于阈值判断。
   const [scrollPosition, setScrollPosition] = useState(0);
   const navbarMenuRef = React.useRef();
+  // 监听导航高度，得到稳定的滚动边界。
   const navbarDimensions = useResizeObserver(navbarMenuRef);
   const navBottom = navbarDimensions ? navbarDimensions.bottom : 0;
+
+  // 监听滚动，决定导航处于“顶部态”还是“滚动态”。
   useScrollPosition(
     ({ prevPos, currPos }) => {
       if (!navbarDimensions) return;
@@ -25,6 +32,7 @@ const Navigation = React.forwardRef((props, ref) => {
   );
 
   React.useEffect(() => {
+    // 当导航高度变化（窗口变化/折叠展开）时重新计算状态。
     if (!navbarDimensions) return;
     navBottom - scrollPosition >= ref.current.offsetTop
       ? setIsTop(false)
@@ -50,7 +58,6 @@ const Navigation = React.forwardRef((props, ref) => {
             </NavLink>
           } */}
           {repos.show && (
-
             <NavLink
               href={process.env.PUBLIC_URL + "/#projects"}
             >

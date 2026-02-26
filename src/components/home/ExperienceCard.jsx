@@ -4,6 +4,7 @@ import {
   Col,
 } from "react-bootstrap";
 
+// 单条工作/角色经历的展示卡片。
 const ExperienceCard = ({ data }) => {
   return (
     <Col lg="6">

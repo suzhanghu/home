@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 
+// 项目区块中的单个仓库卡片。
 const ProjectCard = ({ value }) => {
   const {
     name,
@@ -56,6 +57,7 @@ const CardButtons = ({ svn_url }) => {
 const Language = ({ languages_url, repo_url }) => {
   const [data, setData] = useState([]);
 
+  // 从 GitHub 拉取语言字节数，并换算为百分比。
   const handleRequest = useCallback(async () => {
     try {
       const response = await axios.get(languages_url);
@@ -103,6 +105,7 @@ const Language = ({ languages_url, repo_url }) => {
 const CardFooter = ({ star_count, repo_url, pushed_at }) => {
   const [updated_at, setUpdated_at] = useState("0 mints");
 
+  // 把 pushed_at 转成“几小时前/具体日期”的可读文本。
   const handleUpdatetime = useCallback(() => {
     const date = new Date(pushed_at);
     const nowdate = new Date();

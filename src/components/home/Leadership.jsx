@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Jumbotron } from "./migration";
 
+// 可选的 Leadership 区块，使用轮播展示图文。
 const Leadership = ({ heading, message, img, imageSize }) => {
   return (
     <Jumbotron

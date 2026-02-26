@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 
+// 加载 GitHub 仓库前用于占位的对象结构。
 const dummyProject = {
   name: null,
   description: null,
@@ -17,6 +18,8 @@ const API = "https://api.github.com";
 // const gitHubQuery = "/repos?sort=updated&direction=desc";
 // const specficQuerry = "https://api.github.com/repos/hashirshoaeb/";
 
+// 项目区块：
+// 从 GitHub 拉取最近仓库，并渲染项目卡片。
 const Project = ({ heading, username, length, specfic }) => {
   const allReposAPI = `${API}/users/${username}/repos?sort=updated&direction=desc`;
   const specficReposAPI = `${API}/repos/${username}`;
@@ -26,15 +29,17 @@ const Project = ({ heading, username, length, specfic }) => {
 
   const [projectsArray, setProjectsArray] = useState([]);
 
+  // 拉取最近仓库 + 可选指定仓库。
   const fetchRepos = useCallback(async () => {
     let repoList = [];
     try {
-      // getting all repos
+      // 获取用户的仓库列表
       const response = await axios.get(allReposAPI);
-      // slicing to the length
+      // 按 length 截取展示数量
       repoList = [...response.data.slice(0, length)];
-      // adding specified repos
+      // 补充指定仓库
       try {
+        // 对用户指定仓库做串行请求。
         for (let repoName of specfic) {
           const response = await axios.get(`${specficReposAPI}/${repoName}`);
           repoList.push(response.data);
@@ -42,7 +47,7 @@ const Project = ({ heading, username, length, specfic }) => {
       } catch (error) {
         console.error(error.message);
       }
-      // setting projectArray
+      // 更新项目状态列表
       // TODO: remove the duplication.
       setProjectsArray(repoList);
     } catch (error) {
@@ -51,6 +56,7 @@ const Project = ({ heading, username, length, specfic }) => {
   }, [allReposAPI, length, specfic, specficReposAPI]);
 
   useEffect(() => {
+    // 首次挂载和依赖变化时重新拉取。
     fetchRepos();
   }, [fetchRepos]);
 

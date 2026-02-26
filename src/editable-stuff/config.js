@@ -1,10 +1,20 @@
-// Navigation Bar SECTION
+/*
+  站点的中心化内容配置文件。
+  用法：
+  - 每个区块的 "show" 控制是否渲染。
+  - 文案、图片、链接等配置会通过 props 传给组件。
+  - 想改首页内容，优先改这里，不必先改组件逻辑。
+*/
+
+// 导航栏区块
 const navBar = {
+  // 控制顶部导航是否显示。
   show: true,
 };
 
-// Main Body SECTION
+// 首屏主区块
 const mainBody = {
+  // 首屏背景渐变色（用于动画背景）。
   gradientColors: "#4484ce, #1ad7c0, #ff9b11, #9b59b6, #ff7f7f, #ecf0f1",
   firstName: "Su",
   middleName: "",
@@ -22,36 +32,33 @@ const mainBody = {
   ],
 };
 
-// ABOUT SECTION
-// If you want the About Section to show a profile picture you can fill the profilePictureLink either with:
-//a) your Instagram username
-//      i.e:profilePictureLink:"johnDoe123",
-//b) a link to an hosted image
-//      i.e:profilePictureLink:"www.picturesonline.com/johnDoeFancyAvatar.jpg",
-//c) image in "editable-stuff" directory and use require("") to import here,
-//      i.e: profilePictureLink: require("../editable-stuff/hashirshoaeb.png"),
-//d) If you do not want any picture to be displayed, just leave it empty :)
-//      i.e: profilePictureLink: "",
-// For Resume either provide link to your resume or import from "editable-stuff" directory
-//     i.e resume: require("../editable-stuff/resume.pdf"),
-//         resume: "https://docs.google.com/document/d/13_PWdhThMr6roxb-UFiJj4YAFOj8e_bv3Vx9UHQdyBQ/edit?usp=sharing",
+// About 区块
+// About 头像支持以下来源：
+// a) Instagram 用户名，例如：profilePictureLink: "johnDoe123"
+// b) 外链图片 URL，例如：profilePictureLink: "www.picturesonline.com/avatar.jpg"
+// c) editable-stuff 目录内图片并通过 require 导入
+//    例如：profilePictureLink: require("../editable-stuff/hashirshoaeb.png")
+// d) 不显示头像则留空字符串
+// Resume 支持外链或本地导入：
+//    例如：resume: require("../editable-stuff/resume.pdf")
+//    或：resume: "https://docs.google.com/..."
 
 const about = {
+  // 为 false 时不渲染 About 区块。
   show: true,
   heading: "About Me",
   imageLink: require("../editable-stuff/Su Zhang.jpeg"),
   imageSize: 375,
   message:
     "My name is Su Zhang. I graduated from the University of Ottawa in Computer Science.currently in my final semester of the Enterprise Software Development at Humber.",
-  resume: "https://docs.google.com/document/d/18o2GCdADcQEIM2KRv5gBhuNgTvdhAE2k/edit?usp=sharing&ouid=100202807743776013675&rtpof=true&sd=true",
+  resume: "",
 };
 
-// PROJECTS SECTION
-// Setting up project lenght will automatically fetch your that number of recently updated projects, or you can set this field 0 to show none.
-//      i.e: reposLength: 0,
-// If you want to display specfic projects, add the repository names,
-//      i.e ["repository-1", "repo-2"]
+// 项目区块
+// reposLength 会自动拉取最近更新的 N 个仓库；设为 0 可不展示自动仓库。
+// specificRepos 可额外指定仓库名数组，例如：["repository-1", "repo-2"]
 const repos = {
+  // 为 false 时隐藏项目区块，并且不会请求 GitHub 数据。
   show: true,
   heading: "Recent Projects",
   gitHubUsername: "suzhanghu", 
@@ -59,8 +66,9 @@ const repos = {
   specificRepos: [],
 };
 
-// Leadership SECTION
+// Leadership 区块
 const leadership = {
+  // 可选轮播区块（默认关闭）。
   show: false,
   heading: "Leadership",
   message:
@@ -83,8 +91,9 @@ const leadership = {
   }
 };
 
-// SKILLS SECTION
+// 技能区块
 const skills = {
+  // 技能区块开关。
   show: true,
   heading: "Skills",
   hardSkills: [
@@ -109,8 +118,9 @@ const skills = {
   ],
 };
 
-// GET IN TOUCH SECTION
+// 联系区块
 const getInTouch = {
+  // 页脚联系区块开关。
   show: true,
   heading: "Get In Touch",
   message:
@@ -119,6 +129,7 @@ const getInTouch = {
 };
 
 const experiences = {
+  // 经验区块开关。
   show: false,
   heading: "Experiences",
   data: [
@@ -135,7 +146,7 @@ const experiences = {
   ]
 }
 
-// Blog SECTION
+// Blog 区块
 // const blog = {
 //   show: false,
 // };

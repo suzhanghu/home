@@ -6,6 +6,8 @@ import {
   Row,
 } from "react-bootstrap";
 
+// 经验区块容器。
+// 从配置读取经历数据并渲染卡片。
 const Experience = ({ experiences }) => {
   return (
     <section className="section">

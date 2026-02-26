@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 
+// 博客内容构建器类：
+// 通过链式 addHeading/addParagraph 组装内容，最后用 getBlog() 输出 JSX。
 class BlogBuilder {
   list = [];
 

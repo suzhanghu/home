@@ -2,6 +2,7 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import SkillsBar from "./SkillsBar";
 
+// 渲染技能列表的一列。
 function SkillsSection({ skills, isScrolled }) {
   return (
     <>
@@ -17,6 +18,7 @@ function SkillsSection({ skills, isScrolled }) {
   );
 }
 
+// 把技能数组拆成两列，适配桌面布局。
 function SkillsTab({ skills, isScrolled }) {
   return (
     <>

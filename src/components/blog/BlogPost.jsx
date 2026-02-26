@@ -1,5 +1,8 @@
 import React from "react";
 import bloglist from "../../editable-stuff/blog";
+
+// 博客详情页：根据路由参数 id 渲染文章。
+// 注意：这里使用的是旧版 react-router 的 match 传参风格。
 const BlogPost = ({ match }) => {
   const { id } = match.params;
   const post = bloglist[id];

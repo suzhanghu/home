@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 import Typist from 'react-typist-component';
 import { Jumbotron } from "./migration";
 
+// 首屏 Hero 区块：
+// 展示姓名、打字机文案、社交链接，以及跳转 About 的按钮。
 const MainBody = React.forwardRef(
   ({ gradient, title, message, icons }, ref) => {
     return (

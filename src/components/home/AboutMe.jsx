@@ -7,15 +7,20 @@ const pictureLinkRegex = new RegExp(
   /[(http(s)?):(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/
 );
 
+// About 区块：
+// - 支持直接传入图片 URL / 本地图片导入
+// - 也支持传 Instagram 用户名（旧逻辑），再尝试解析头像地址
 const AboutMe = ({ heading, message, link, imgSize, resume }) => {
   const [profilePicUrl, setProfilePicUrl] = React.useState("");
   const [showPic, setShowPic] = React.useState(Boolean(link));
+  // 参考：useEffect 依赖项告警的处理思路
   // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
   React.useEffect(() => {
     const handleRequest = async () => {
       const instaLink = "https://www.instagram.com/";
       const instaQuery = "/?__a=1";
       try {
+        // 旧版接口抓取方式，Instagram 返回结构变化时可能失效。
         const response = await axios.get(instaLink + link + instaQuery);
         setProfilePicUrl(response.data.graphql.user.profile_pic_url_hd);
       } catch (error) {

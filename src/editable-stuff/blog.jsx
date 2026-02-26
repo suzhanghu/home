@@ -1,4 +1,6 @@
 import { BlogBuilder } from "../components/blog/BlogBuilder";
+// 博客静态数据源：通过 BlogBuilder 组装文章内容。
+// 若启用 blog 路由，列表页和详情页都会读取这里的数据。
 const bloglist = [];
 
 const blog = new BlogBuilder({
